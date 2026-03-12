@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import {
   generateDublinWeatherData,
   generateLondonWeatherData,
+ generateParisWeatherData,
+ generateTokyoWeatherData,
 } from "../services/weatherService.js";
 import { validationResult } from "express-validator";
 
@@ -35,8 +37,12 @@ export const getWeatherData = async (req: Request, res: Response) => {
       finalWeatherData = generateLondonWeatherData();
     } else if (city === "dublin") {
       finalWeatherData = generateDublinWeatherData();
+    } else if (city === "tokyo") {
+      finalWeatherData = generateTokyoWeatherData();
+    } else if (city === "paris") {
+      finalWeatherData = generateParisWeatherData();
     } else {
-      // If the city is not london or dublin, we will throw an error
+      // If the city is not london, dublin, tokyo, or paris, we will throw an error
       res.status(404).send("City not found");
     }
 
@@ -47,3 +53,4 @@ export const getWeatherData = async (req: Request, res: Response) => {
     res.status(500).send("Error in fetching weather data");
   }
 };
+

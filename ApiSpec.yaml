@@ -4,8 +4,8 @@ info:
   version: 1.0.0
   description: A simple API to fetch weather information for a specific city
 servers:
-  - url: http://localhost:3000/api
-    description: Local server
+  - url: https://YOUR-CODESPACE-URL-3000.app.github.dev/api
+    description: Codespaces server
 paths:
   /weather/{city}:
     get:
